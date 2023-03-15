@@ -17,5 +17,13 @@
   "bugs": {
     "url": "https://github.com/lkalliance/module-14-challenge/issues"
   },
-  "homepage": "https://github.com/lkalliance/module-14-challenge#readme"
+  "homepage": "https://github.com/lkalliance/module-14-challenge#readme",
+  "dependencies": {
+    "connect-session-sequelize": "^7.1.5",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.0.2",
+    "express-session": "^1.17.3",
+    "path": "^0.12.7",
+    "sequelize": "^6.29.3"
+  }
 }
