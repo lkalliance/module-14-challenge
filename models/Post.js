@@ -19,7 +19,7 @@ Post.init(
             }
         },
         content: {
-            type: DataType.STRING,
+            type: DataTypes.STRING,
             allowNull: false
         },
         user_id: {
