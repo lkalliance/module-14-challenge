@@ -1,3 +1,13 @@
-<h3>{{title}}</h3>
-<p>{{user.username}}</p>
-<div>{{content}}</div>
+<h3>{{post.title}}</h3>
+<p>{{post.user.username}}</p>
+<p>{{format_date post.created_at}}</p>
+<div>{{post.content}}</div>
+<h4>Comments:</h4>
+{{#each comments as |comment|}}
+{{> comment-details}}
+{{/each}}
+<h4>Add a comment:</h4>
+<form>
+    <textarea id="newComment"></textarea>
+    <button id="commentBtn">Submit</button>
+</form>
