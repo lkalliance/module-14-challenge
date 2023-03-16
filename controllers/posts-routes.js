@@ -27,7 +27,8 @@ router.get('/', async (req, res) => {
 });
 
 // GET one post
-router.get('/:id', isAuth, async (req, res) => {
+router.get('/:id', async (req, res) => {
+  console.log(req.session.user);
   try {
     const postData = await Post.findByPk(req.params.id, {
       attributes: ['title', 'content', 'created_at'],
@@ -55,3 +56,6 @@ router.get('/:id', isAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
+module.exports = router;

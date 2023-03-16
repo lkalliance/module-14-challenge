@@ -4,7 +4,6 @@ const isAuth = require('../utils/auth');
 
 // GET all posts for homepage
 router.get('/', async (req, res) => {
-  console.log("I'm on the home page");
   try {
     const postData = await Post.findAll({
       attributes: ['id', 'title'],
@@ -30,7 +29,6 @@ router.get('/', async (req, res) => {
 
 // GET one post
 router.get('/post/:id', isAuth, async (req, res) => {
-  console.log("I'm reading a post");
   try {
     const postData = await Post.findByPk(req.params.id, {
       attributes: ['title', 'content', 'created_at'],
@@ -81,7 +79,6 @@ router.get('/painting/:id', async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  console.log("I'm on the login page");
   res.render('login');
 });
 

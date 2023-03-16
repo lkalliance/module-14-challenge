@@ -6,10 +6,12 @@ const isAuth = require('../../utils/auth');
 router.post('/', isAuth, async (req, res) => {
   try {
     const commentData = await Comment.create({
-      content: req.body.content
+      content: req.body.content,
+      post_id: req.body.post_id,
+      user_id: req.session.user
     });
 
-    res.status(200).redirect(req.originalUrl);
+    res.redirect(req.originalUrl);
 
   } catch (err) {
     console.log(err);
