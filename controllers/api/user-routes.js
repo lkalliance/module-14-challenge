@@ -28,8 +28,6 @@ router.post('/login', async (req, res) => {
       },
     });
 
-    console.log(userData);
-
     if (!userData) {
       res
         .status(400)
@@ -51,6 +49,7 @@ router.post('/login', async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.user = userData.id;
 
       res
         .status(200)
