@@ -1,4 +1,3 @@
-<p>Content goes here</p>
-<button id="logout">Log out</button>
-
-<script src="./js/logout.js"></script>
+{{#each posts as |post|}}
+{{> post-details}}
+{{/each}}
