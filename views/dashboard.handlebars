@@ -1,0 +1,11 @@
+<ul id="postList">
+    {{#each posts as |post|}}
+    <li>
+        {{> post-details}}
+        <a href="/posts/edit/{{post.id}}" class="edit" data-id="{{post.id}}">edit</a>
+        <a href="/" class="delete" data-id="{{post.id}}">delete</a>
+    </li>
+    {{/each}}
+</ul>
+
+<script src="/js/dashboard.js"></script>

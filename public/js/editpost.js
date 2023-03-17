@@ -1,27 +1,33 @@
 const postActions = () => {
 
-    const addPost = document.querySelector("#addPostBtn");
+    const editPost = document.querySelector("#editPostBtn");
     const newTitle = document.querySelector("#title");
     const newText = document.querySelector("#content");
 
-    addPost.addEventListener("click", async (e) => {
+    editPost.addEventListener("click", async (e) => {
         e.preventDefault();
         
+        const pieces = window.location.href.split('/');
+        const postId = pieces[pieces.length - 1];
+
         try {
             const bodyObj = {
                 title: newTitle.value,
                 content: newText.value
             }
+
+            console.log(bodyObj);
             fetchObj = {
-                method: 'POST',
+                method: 'PUT',
                 body: JSON.stringify(bodyObj),
                 headers: {
                     'Content-Type': 'application/json'
                 }
             }
-            const postData = await fetch("/api/posts/", fetchObj);
+            const fetchUrl = `/api/posts/${postId}`;
+            const editData = await fetch(fetchUrl, fetchObj);
 
-            document.location.replace(postData.url);
+            document.location.replace(`/posts/view/${postId}`);
         } catch (err) {
             console.log(err);
         }

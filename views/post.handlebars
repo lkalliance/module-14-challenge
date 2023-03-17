@@ -1,6 +1,8 @@
 <h3>{{post.title}}</h3>
 <p>{{post.user.username}}</p>
-<p>{{format_date post.created_at}}</p>
+<p>{{format_date post.created_at}}
+    {{#if post.edited}} (edited on {{format_date post.updated_at}}){{/if}}
+</p>
 <div>{{post.content}}</div>
 <h4>Comments:</h4>
 {{#each comments as |comment|}}

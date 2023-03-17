@@ -1,0 +1,21 @@
+{{#if userInfo.edit}}
+<h3>Edit this post</h3>
+{{else}}
+<h3>Create a new post</h3>
+{{/if}}
+
+<form id="new-post">
+    <input type="text" id="title"{{#if userInfo.edit}} value="{{post.title}}"{{/if}} />
+    <textarea id="content" width="600" height="1200">{{#if userInfo.edit}}{{post.content}}{{/if}}</textarea>
+    {{#if userInfo.edit}}
+    <button id="editPostBtn">Save</button>
+    {{else}}
+    <button id="addPostBtn">Post</button>
+    {{/if}}
+</form>
+
+{{#if userInfo.edit}}
+<script src="/js/editpost.js"></script>
+{{else}}
+<script src="/js/newpost.js"></script>
+{{/if}}
