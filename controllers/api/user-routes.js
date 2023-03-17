@@ -6,10 +6,24 @@ const { User } = require('../../models');
 router.post('/', async (req, res) => {
   try {
     const newUser = req.body;
+    const nameCheck = await User.findOne({ where: { username: req.body.username }})
+    if (nameCheck) {
+      res.status(400).json({ message: 'Username already in use. Please try again!' });
+      return;
+    }
+    const mailCheck = await User.findOne({ where: { email: req.body.email }})
+    if (nameCheck) {
+      res.status(400).json({ message: 'Email already in use. Please try again!' });
+      return;
+    }
+
     const dbUserData = await User.create(newUser);
+    const user = dbUserData.get({ plain: true })
 
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.user = user.id;
+      req.session.username = user.username;
 
       res.status(200).json(dbUserData);
     });

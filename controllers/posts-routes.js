@@ -6,12 +6,15 @@ const isAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
-      attributes: ['id', 'title'],
+      attributes: ['id', 'title', 'created_at'],
       include: [
         {
           model: User,
           attributes: ['username']
         }
+      ],
+      order: [
+        ['created_at', 'DESC']
       ]
     });
 
@@ -35,7 +38,7 @@ router.get('/', async (req, res) => {
 router.get('/view/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
-      attributes: ['title', 'content', 'created_at'],
+      attributes: ['title', 'content', 'created_at', 'updated_at'],
       include: {
           model: User,
           attributes: ['username']
@@ -52,12 +55,12 @@ router.get('/view/:id', async (req, res) => {
       }
     });
     const post = postData.get({ plain: true });
+    post.edited = (post.created_at !== post.updated_at);
     const userInfo = {
       username: req.session.username,
       userId: req.session.userId,
-      loggedIn: req.session.loggedIn
+      loggedIn: req.session.loggedIn,
     }
-
     const comments = commentData.map((comment) => { return comment.get({ plain: true })} );
     res.render('post', { post, comments, userInfo });
   } catch (err) {
@@ -70,10 +73,33 @@ router.get('/create', isAuth, async (req, res) => {
   const userInfo = {
     username: req.session.username,
     userId: req.session.userId,
-    loggedIn: req.session.loggedIn
+    loggedIn: req.session.loggedIn,
+    edit: false,
+    updated: (post.created_at == post.updated_at)
   }
 
-  res.render('newpost', { userInfo });
+  res.render('postform', { userInfo });
+
+});
+
+router.get('/edit/:id', isAuth, async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      attributes: ['title', 'content']
+    });
+    const post = postData.get({ plain: true });
+    const userInfo = {
+      username: req.session.username,
+      userId: req.session.userId,
+      loggedIn: req.session.loggedIn,
+      edit: true
+    }
+    
+    res.render('postform', { post, userInfo });
+  } catch {
+    console.log(err);
+    res.status(500).json(err);
+  }
 
 });
 

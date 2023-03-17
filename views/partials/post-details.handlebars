@@ -1,4 +1,2 @@
-<li>
-    <h3><a href='/posts/view/{{id}}'>{{title}}</a></h3>
-    <p>{{user.username}}</p>
-</li>
+<h3><a href='/posts/view/{{id}}'>{{title}}</a></h3>
+<p>{{#if user.username}}{{user.username}}, {{/if}}{{format_date created_at}}</p>

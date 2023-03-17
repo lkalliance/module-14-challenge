@@ -6,14 +6,17 @@ const isAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
-      attributes: ['id', 'title'],
+      attributes: ['id', 'title', 'created_at'],
       include: [
         {
           model: User,
           attributes: ['username']
         }
       ],
-      limit: 5
+      limit: 5,
+      order: [
+        ['created_at', 'DESC']
+      ]
     });
 
     const posts = postData.map((post) =>
@@ -30,7 +33,31 @@ router.get('/', async (req, res) => {
     console.log(err);
     res.status(500).json(err);
   }
-}); 
+});
+
+router.get('/dash', isAuth, async (req, res) => {
+  try {
+    const postData = await Post.findAll({
+      where: { user_id: req.session.user },
+      attributes: [ 'id', 'title', 'created_at' ],
+      order: [
+        ['created_at', 'DESC']
+      ]
+    })
+
+    const posts = postData.map((post) => post.get({ plain: true }));
+    const userInfo = {
+      username: req.session.username,
+      userId: req.session.userId,
+      loggedIn: req.session.loggedIn
+    }
+
+    res.render('dashboard', { posts, userInfo });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+})
 
 router.get('/login', (req, res) => {
   const userInfo = {

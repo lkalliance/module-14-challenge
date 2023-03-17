@@ -1,5 +1,8 @@
-{{#each posts as |post|}}
-{{> post-details}}
-{{/each}}
-
+<ul>
+    {{#each posts as |post|}}
+    <li data-id="{{post.id}}">
+        {{> post-details}}
+    </li>
+    {{/each}}
+</ul>
 <a href="/posts">See all posts</a>
