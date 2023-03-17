@@ -10,7 +10,13 @@
 
 <body>
   <header>
-    <h1>My Tech Blog</h1>
+    <h1><a href="/">My Tech Blog</a></h1>
+    {{#if userInfo.loggedIn}}
+    <p>{{userInfo.username}}<br/>
+    <a href="/" id="logout">Log out</a>
+    {{else}}
+    <p><a href="/login">Log in</a></p>
+    {{/if}}
   </header>
   <nav>
   </nav>
@@ -18,10 +24,9 @@
     {{{body}}}
   </main>
 
-  <button id="logout">Log Out</button>
-
+  {{#if userInfo.loggedIn}}
   <script src="/js/logout.js"></script>
-  <script src="/js/script.js"></script>
+  {{/if}}
 </body>
 
 </html>

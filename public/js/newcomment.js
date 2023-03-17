@@ -5,7 +5,8 @@ window.onload = () => {
     const postId = loc[loc.length-1];
     
     
-    addComment.addEventListener("click", async (e) => {
+    if(addComment) {
+        addComment.addEventListener("click", async (e) => {
         e.preventDefault();
         const bodyObj = {
             content: newComment.value,
@@ -20,5 +21,6 @@ window.onload = () => {
         }
         await fetch('/api/comments/', fetchObj)
         window.location.href=window.location.href;
-    })
+        })
+    }
 };

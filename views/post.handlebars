@@ -6,8 +6,13 @@
 {{#each comments as |comment|}}
 {{> comment-details}}
 {{/each}}
+{{#if userInfo.loggedIn}}
 <h4>Add a comment:</h4>
 <form>
     <textarea id="newComment"></textarea>
     <button id="commentBtn">Submit</button>
 </form>
+<script src="/js/newcomment.js"></script>
+{{else}}
+<a href="/login">Log in</a> to post your thoughts.
+{{/if}}
