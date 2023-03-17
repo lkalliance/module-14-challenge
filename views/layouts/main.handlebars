@@ -10,16 +10,17 @@
 
 <body>
   <header>
-    <h1><a href="/">My Tech Blog</a></h1>
-    {{#if userInfo.loggedIn}}
-    <p>{{userInfo.username}}<br/>
-    <a href="/" id="logout">Log out</a>
-    {{else}}
-    <p><a href="/login">Log in</a></p>
-    {{/if}}
+    <h1>My Tech Blog</h1>
+    <nav>
+      <a href="/">HOME</a> 
+      {{#if userInfo.loggedIn}}
+      {{userInfo.username}} 
+      <a href="/logout" id="logout">Log out</a> <a href="/dash">Dashboard</a>
+      {{else}}
+      <a href="/login">Log in</a> 
+      {{/if}}
+    </nav>
   </header>
-  <nav>
-  </nav>
   <main>
     {{{body}}}
   </main>
