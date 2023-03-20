@@ -38,7 +38,7 @@ router.delete('/:id', isAuth, async (req, res) => {
       where: { id: req.params.id }
     })
 
-    res.status(200).json({ message: 'Post deleted' })
+    res.status(200).json({ message: 'Post deleted' });
 
   } catch (err) {
     console.log(err);

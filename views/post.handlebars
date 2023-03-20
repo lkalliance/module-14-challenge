@@ -2,16 +2,19 @@
 <cite class="by">{{post.user.username}}, {{format_date post.created_at}}{{#if post.edited}} (edited on {{format_date post.updated_at}}){{/if}}
 </cite>
 <article>{{post.content}}</article>
-<h3>Comments</h3>
+<div id="comments"><h3>Comments</h3>
 {{#each comments as |comment|}}
 {{> comment-details}}
 {{/each}}
+</div>
 {{#if userInfo.loggedIn}}
-<h4>Add a comment:</h4>
-<form>
-    <textarea id="newComment"></textarea>
-    <button id="commentBtn">Submit</button>
-</form>
+<div id="add-comment">
+    <h4>Add a comment:</h4>
+    <form>
+        <textarea id="newComment"></textarea>
+        <button id="commentBtn" class="btn btn-primary btn-sm rounded-pill">Submit</button>
+    </form>
+</div>
 <script src="/js/newcomment.js"></script>
 {{else}}
 <a href="/login">Log in</a> to post your thoughts.

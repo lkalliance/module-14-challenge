@@ -55,7 +55,9 @@ router.get('/view/:id', async (req, res) => {
       }
     });
     const post = postData.get({ plain: true });
-    post.edited = (post.created_at !== post.updated_at);
+    post.edited = (!post.created_at == post.updated_at);
+    console.log(post);
+    
     const userInfo = {
       username: req.session.username,
       userId: req.session.userId,

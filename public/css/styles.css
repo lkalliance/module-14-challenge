@@ -3,6 +3,9 @@
     --main-text: #ffffff;
     --main-hover: rgb(175, 175, 232);
     --headline-color: rgb(168, 122, 37);
+    --cite-color: #777777;
+    --comment-color: #777777;
+    --comment-cite-color: #aaaaaa;
 }
 
 header {
@@ -72,6 +75,11 @@ main h3 a {
     color: var(--headline-color);
 }
 
+main cite,
+main cite a {
+    color: var(--cite-color);
+}
+
 main div.container {
     margin-left: 0;
     padding-left: 0;
@@ -84,6 +92,7 @@ main .row {
 main cite {
     font-style: normal;
     font-size: 0.9em;
+    display: block;
 }
 
 main cite.by {
@@ -103,14 +112,73 @@ div.comment {
     white-space: pre-wrap;
 }
 
-main article + h3 {
+main div#comments h3 {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--main);
     margin-top: 12px;
     border-top: 1px solid #cccccc;
     padding-top: 12px;
 }
 
-main h4 {
+div#comments {
+    color: var(--comment-color);
+    font-size: .8em;
+}
+
+div#comments cite {
+    color: var(--comment-cite-color);
+}
+
+div#add-comment h4 {
     font-size: 1em;
     font-weight: 700;
+    color: var(--main);
     margin-top: 12px;
+}
+
+div#add-comment textarea {
+    width: 75%;
+    height: 75px;
+    font-size: .8em;
+    margin-right: 25%
+}
+
+form#login-form,
+form#signup-form {
+    width: 44%;
+    margin: 0 3%;
+    float: left;
+    margin-top: 10px;
+}
+
+form#login-form input,
+form#signup-form input {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: .8em;
+}
+
+form#new-post input,
+form#new-post textarea {
+    width: 75%;
+    margin-right: 25%;
+    font-size: .8em;
+    margin-bottom: 10px;
+}
+
+form#new-post textarea {
+    height: 200px;
+}
+
+form label {
+    font-size: .8em;
+    font-weight: bold;
+    display: block;
+}
+
+a.edit-post,
+a.delete-post {
+    font-size: .8em;
 }
