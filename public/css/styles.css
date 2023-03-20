@@ -1,0 +1,116 @@
+:root {
+    --main: #2d3e81;
+    --main-text: #ffffff;
+    --main-hover: rgb(175, 175, 232);
+    --headline-color: rgb(168, 122, 37);
+}
+
+header {
+    background-color: var(--main);
+    color: var(--main-text);
+}
+
+header h1 {
+    padding: 12px 12px 0;
+    margin-bottom: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+header nav {
+    padding: 0 0 12px;
+    color: var(--main-hover);
+}
+
+header a,
+header a.nav-link {
+    color: var(--main-text);
+    text-decoration: none;
+    padding: 0;
+}
+
+header a:hover,
+header a.nav-link:hover {
+    color: var(--main-hover);
+}
+
+header .navbar-nav {
+    flex-direction: row;
+}
+
+header li.nav-item {
+    padding-right: 15px;
+}
+
+header ul.navbar-nav {
+    padding-bottom: 0;
+}
+
+main {
+    padding: 12px;
+}
+
+
+main a {
+    color: #000000;
+}
+
+main h2 {
+    font-weight: 700;
+    color: var(--main);
+    margin-bottom: 8px;
+}
+
+main h3 {
+    font-size: 1.2em;
+    margin-bottom: 3px;
+    font-weight: 500;
+}
+
+main h3 a {
+    text-decoration: none;
+    color: var(--headline-color);
+}
+
+main div.container {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+main .row {
+    align-items: start;
+}
+
+main cite {
+    font-style: normal;
+    font-size: 0.9em;
+}
+
+main cite.by {
+    display: block;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #cccccc;
+    margin-bottom: 10px;
+}
+
+main ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+main article,
+div.comment {
+    white-space: pre-wrap;
+}
+
+main article + h3 {
+    margin-top: 12px;
+    border-top: 1px solid #cccccc;
+    padding-top: 12px;
+}
+
+main h4 {
+    font-size: 1em;
+    font-weight: 700;
+    margin-top: 12px;
+}

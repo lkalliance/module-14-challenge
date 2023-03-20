@@ -7,20 +7,24 @@ window.onload = () => {
     
     if(addComment) {
         addComment.addEventListener("click", async (e) => {
-        e.preventDefault();
-        const bodyObj = {
-            content: newComment.value,
-            post_id: postId
-        }
-        fetchObj = {
-            method: 'POST',
-            body: JSON.stringify(bodyObj),
-            headers: {
-                'Content-Type': 'application/json'
+            e.preventDefault();
+            try {
+                const bodyObj = {
+                    content: newComment.value.trim(),
+                    post_id: postId
+                }
+                fetchObj = {
+                    method: 'POST',
+                    body: JSON.stringify(bodyObj),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+                await fetch('/api/comments/', fetchObj)
+                window.location.href=window.location.href;
+            } catch(err) {
+                console.log(err);
             }
-        }
-        await fetch('/api/comments/', fetchObj)
-        window.location.href=window.location.href;
         })
     }
-};
+}

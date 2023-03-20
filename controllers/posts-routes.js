@@ -73,9 +73,7 @@ router.get('/create', isAuth, async (req, res) => {
   const userInfo = {
     username: req.session.username,
     userId: req.session.userId,
-    loggedIn: req.session.loggedIn,
-    edit: false,
-    updated: (post.created_at == post.updated_at)
+    loggedIn: req.session.loggedIn
   }
 
   res.render('postform', { userInfo });
