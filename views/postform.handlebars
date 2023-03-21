@@ -1,16 +1,18 @@
 {{#if userInfo.edit}}
-<h3>Edit this post</h3>
+<h2>Edit this post</h2>
 {{else}}
-<h3>Create a new post</h3>
+<h2>Create a new post</h2>
 {{/if}}
 
 <form id="new-post">
+    <label for="title">Post title</label>
     <input type="text" id="title"{{#if userInfo.edit}} value="{{post.title}}"{{/if}} />
+    <label for="content">Post content</label>
     <textarea id="content" width="600" height="1200">{{#if userInfo.edit}}{{post.content}}{{/if}}</textarea>
     {{#if userInfo.edit}}
-    <button id="editPostBtn">Save</button>
+    <button id="editPostBtn" class="btn btn-primary btn-sm rounded-pill">SAVE</button>
     {{else}}
-    <button id="addPostBtn">Post</button>
+    <button id="addPostBtn" class="btn btn-primary btn-sm rounded-pill">POST</button>
     {{/if}}
 </form>
 

@@ -11,9 +11,13 @@ const postActions = () => {
         const postId = pieces[pieces.length - 1];
 
         try {
+            let text = newText.value;
+            text = text.replace(/<.*?>/, "").replace(/<.*?>/, "")
+            let title = newTitle.value;
+            title = title.replace(/<.*?>/, "").replace(/<.*?>/, "")
             const bodyObj = {
-                title: newTitle.value,
-                content: newText.value
+                title: title,
+                content: text
             }
 
             console.log(bodyObj);

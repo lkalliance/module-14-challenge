@@ -1,9 +1,6 @@
 const postActions = () => {
 
-    const editList = document.querySelectorAll('.edit');
-    const deleteList = document.querySelectorAll('.delete');
-
-    console.log(editList);
+    const deleteList = document.querySelectorAll('.delete-post');
 
     Object.values(deleteList).forEach((link) => {
         link.addEventListener("click", async (e) => {
@@ -23,25 +20,6 @@ const postActions = () => {
     })
 
 
-    // postList.addEventListener("click", async (e) => {
-    //     if(e.target.nodeType !== "A") return;
-
-    //     console.log(e.target);
-        
-    //     if (e.target.className == 'edit') {
-    //         try {
-    //             alert(`Edit post number ${e.target.dataset.id}`)
-    //         } catch (err) {
-    //             console.log(err);
-    //         }
-    //     } else if (e.target.className == 'delete') {
-    //         try {
-    //             alert('Delete!')
-    //         } catch (err) {
-    //             console.log(err);
-    //         }
-    //     }
-    // })
 
 }
 

@@ -5,20 +5,42 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tech Blog</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
 
 <body>
   <header>
     <h1>My Tech Blog</h1>
-    <nav>
-      <a href="/">HOME</a> 
-      {{#if userInfo.loggedIn}}
-      {{userInfo.username}} 
-      <a href="/logout" id="logout">Log out</a> <a href="/dash">Dashboard</a>
-      {{else}}
-      <a href="/login">Log in</a> 
-      {{/if}}
+    <nav class="navbar">
+      <div class="container-fluid">
+        <ul class="navbar-nav me-auto mb-0">
+          <li class="nav-item">
+            <a class="nav-link" href="/">HOME</a>
+          </li>
+          {{#if userInfo.loggedIn}}
+          <li class="nav-item">
+            {{userInfo.username}}
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/dash">My Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/posts/create">Post</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout" id="logout">Log out</a>
+          </li>
+          {{else}}
+          <li class="nav-item">
+            <a class="nav-link" href="/login" class="nav-link">Log in</a>
+          </li> 
+          {{/if}}
+        </ul>
+      </div>
     </nav>
   </header>
   <main>

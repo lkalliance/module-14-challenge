@@ -3,6 +3,7 @@
     <div data-id="{{id}}" class="border bg-light p-2  p-lg-3 rounded">
         <h3><a href='/posts/view/{{id}}'>{{title}}</a></h3>
         <cite>{{#if user.username}}<a href="/dash/{{user.id}}">{{user.username}}</a>, {{/if}}{{format_date created_at}}</cite>
+        <a href='/posts/edit/{{id}}' class='edit-post'>edit</a> <a href='#' class='delete-post' data-id='{{id}}'>delete</a>
     </div>
 
 </li>
