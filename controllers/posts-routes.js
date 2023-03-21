@@ -55,15 +55,24 @@ router.get('/view/:id', async (req, res) => {
       }
     });
     const post = postData.get({ plain: true });
-    post.edited = (!post.created_at == post.updated_at);
-    console.log(post);
-    
+
+    const created = `${post.created_at.getFullYear()}${post.created_at.getMonth()}${post.created_at.getDate()}${post.created_at.getHours()}${post.created_at.getMinutes()}${post.created_at.getSeconds()}`;
+
+    const updated = `${post.updated_at.getFullYear()}${post.updated_at.getMonth()}${post.updated_at.getDate()}${post.updated_at.getHours()}${post.updated_at.getMinutes()}${post.updated_at.getSeconds()}`;
+
+    post.edited = (created !== updated);  
+
     const userInfo = {
       username: req.session.username,
       userId: req.session.userId,
       loggedIn: req.session.loggedIn,
+      edited: post.edited
     }
+
     const comments = commentData.map((comment) => { return comment.get({ plain: true })} );
+
+    console.log(comments);
+
     res.render('post', { post, comments, userInfo });
   } catch (err) {
     console.log(err);
@@ -75,7 +84,8 @@ router.get('/create', isAuth, async (req, res) => {
   const userInfo = {
     username: req.session.username,
     userId: req.session.userId,
-    loggedIn: req.session.loggedIn
+    loggedIn: req.session.loggedIn,
+    edit: false
   }
 
   res.render('postform', { userInfo });
@@ -85,7 +95,7 @@ router.get('/create', isAuth, async (req, res) => {
 router.get('/edit/:id', isAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
-      attributes: ['title', 'content']
+      attributes: ['title', 'content', 'created_at', 'updated_at']
     });
     const post = postData.get({ plain: true });
     const userInfo = {
@@ -94,6 +104,12 @@ router.get('/edit/:id', isAuth, async (req, res) => {
       loggedIn: req.session.loggedIn,
       edit: true
     }
+
+    const created = `${post.created_at.getFullYear()}${post.created_at.getMonth()}${post.created_at.getDate()}${post.created_at.getHours()}${post.created_at.getMinutes()}${post.created_at.getSeconds()}`;
+
+    const updated = `${post.updated_at.getFullYear()}${post.updated_at.getMonth()}${post.updated_at.getDate()}${post.updated_at.getHours()}${post.updated_at.getMinutes()}${post.updated_at.getSeconds()}`;
+
+    post.edited = (created !== updated);  
     
     res.render('postform', { post, userInfo });
   } catch {

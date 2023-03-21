@@ -9,8 +9,11 @@ window.onload = () => {
         addComment.addEventListener("click", async (e) => {
             e.preventDefault();
             try {
+                let text = newComment.value;
+                text = text.replace(/<.*?>/, "").replace(/<.*?>/, "");
+
                 const bodyObj = {
-                    content: newComment.value.trim(),
+                    content: text,
                     post_id: postId
                 }
                 fetchObj = {

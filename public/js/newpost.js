@@ -8,9 +8,13 @@ const postActions = () => {
         e.preventDefault();
         
         try {
+            let text = newText.value;
+            text = text.replace(/<.*?>/, "").replace(/<.*?>/, "");
+            let title = newTitle.value;
+            title = title.replace(/<.*?>/, "").replace(/<.*?>/, "");
             const bodyObj = {
-                title: newTitle.value,
-                content: newText.value
+                title: title,
+                content: text
             }
             fetchObj = {
                 method: 'POST',
