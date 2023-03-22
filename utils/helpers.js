@@ -6,6 +6,7 @@ module.exports = {
     return date.toLocaleDateString();;
   },
   line_breaks: (string) => {
+    // replace line breaks with <br> tags
     return string.replace(/(\r\n|\n|\r)/gm, '<br>');
   }
 };

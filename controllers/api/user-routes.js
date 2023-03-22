@@ -2,17 +2,21 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../../models');
 
-// CREATE new user
 router.post('/', async (req, res) => {
+  // Creates a new user
   try {
     const newUser = req.body;
+
+    // check to see if this username already exists
     const nameCheck = await User.findOne({ where: { username: req.body.username }})
-    if (nameCheck) {
+    if ( nameCheck ) {
       res.status(400).json({ message: 'Username already in use. Please try again!' });
       return;
     }
+
+    // check to see if this email already exists
     const mailCheck = await User.findOne({ where: { email: req.body.email }})
-    if (nameCheck) {
+    if ( mailCheck ) {
       res.status(400).json({ message: 'Email already in use. Please try again!' });
       return;
     }
@@ -20,12 +24,18 @@ router.post('/', async (req, res) => {
     const dbUserData = await User.create(newUser);
     const user = dbUserData.get({ plain: true })
 
+    if ( !user.id ) {
+      res.status(500).json({ message: 'User not created.'});
+      return;
+    }
+
+    // everything cool, log this user in
     req.session.save(() => {
       req.session.loggedIn = true;
       req.session.user = user.id;
       req.session.username = user.username;
 
-      res.status(200).json(dbUserData);
+      res.status(200).json({ message: 'User created!' });
     });
   } catch (err) {
     console.log(err);
@@ -33,13 +43,12 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Login
 router.post('/login', async (req, res) => {
+  // Logs the user in
   try {
+    // look for the given username
     const userData = await User.findOne({
-      where: {
-        username: req.body.username
-      },
+      where: { username: req.body.username }
     });
 
     if (!userData) {
@@ -47,6 +56,7 @@ router.post('/login', async (req, res) => {
       return;
     }
 
+    // check the password
     const validPassword = await bcrypt.compare(
       req.body.password,
       userData.password
@@ -57,6 +67,7 @@ router.post('/login', async (req, res) => {
       return;
     }
 
+    // everything cool, log in
     req.session.save(() => {
       req.session.loggedIn = true;
       req.session.user = userData.id;
@@ -72,6 +83,7 @@ router.post('/login', async (req, res) => {
 
 // Logout
 router.post('/logout', (req, res) => {
+  // Logs the user out
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();

@@ -1,3 +1,5 @@
+/* --- GLOBAL COLOR VARIABLES --- */
+
 :root {
     --page-background: #d6ddec;
     --main: #2d3e81;
@@ -8,6 +10,8 @@
     --comment-color: #777777;
     --comment-cite-color: #aaaaaa;
 }
+
+/* --- BODY AND HEADER --- */
 
 body {
     background-color: var(--page-background);
@@ -25,16 +29,42 @@ header h1 {
     font-weight: 700;
 }
 
+a.bold-link {
+    margin-bottom: 6px;
+    color: var(--main);
+    font-weight: 700;
+}
+
+div#warning {
+    margin-top: 8px;
+    color: #990000;
+    font-weight: 700;
+}
+
+
+/* Header navigation */
+
 header nav {
     padding: 0 0 12px;
     color: var(--main-hover);
 }
 
+header ul.navbar-nav {
+    flex-direction: row;
+    padding-bottom: 0;
+}
+
+ul.navbar-nav,
+header div {
+    margin-left: 12px;
+    font-size: .8em;
+}
+
 header a,
 header a.nav-link {
+    padding: 0;
     color: var(--main-text);
     text-decoration: none;
-    padding: 0;
 }
 
 header a:hover,
@@ -42,70 +72,44 @@ header a.nav-link:hover {
     color: var(--main-hover);
 }
 
-header .navbar-nav {
-    flex-direction: row;
-}
-
 header li.nav-item {
     padding-right: 15px;
 }
 
-header ul.navbar-nav {
-    padding-bottom: 0;
-}
+
+/* --- MAIN AREA --- */
 
 main {
     padding: 12px;
 }
-
 
 main a {
     color: #000000;
 }
 
 main h2 {
+    margin-bottom: 8px;
     font-weight: 700;
     color: var(--headline-color);
-    margin-bottom: 8px;
 }
 
 main h3 {
-    font-size: 1.2em;
     margin-bottom: 3px;
+    font-size: 1.2em;
     font-weight: 500;
 }
 
 main h3 a {
-    text-decoration: none;
     color: var(--headline-color);
+    text-decoration: none;
 }
 
-main cite,
-main cite a {
-    color: var(--cite-color);
-}
+/* Post lists */
 
 main div.container {
+    margin-top: 6px;
     margin-left: 0;
     padding-left: 0;
-    margin-top: 6px;
-}
-
-main .row {
-    align-items: start;
-}
-
-main cite {
-    font-style: normal;
-    font-size: 0.9em;
-    display: block;
-}
-
-main cite.by {
-    display: block;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #bababa;
-    margin-bottom: 10px;
 }
 
 main ul {
@@ -113,18 +117,37 @@ main ul {
     padding-left: 0;
 }
 
-main article,
-div.comment {
-    white-space: pre-wrap;
+main .row {
+    align-items: start;
 }
 
+main cite,
+main cite a {
+    color: var(--cite-color);
+}
+
+main cite {
+    display: block;
+    font-size: 0.9em;
+    font-style: normal;
+}
+
+main cite.by {
+    display: block;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #bababa;
+}
+
+/* Comments */
+
 main div#comments h3 {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #bababa;
+    color: var(--main);
     font-size: 1.2em;
     font-weight: 700;
-    color: var(--main);
-    margin-top: 12px;
-    border-top: 1px solid #bababa;
-    padding-top: 12px;
 }
 
 div#comments {
@@ -137,18 +160,29 @@ div#comments cite {
 }
 
 div#add-comment h4 {
+    margin-top: 12px;
+    color: var(--main);
     font-size: 1em;
     font-weight: 700;
-    color: var(--main);
-    margin-top: 12px;
 }
 
 div#add-comment textarea {
     width: 75%;
     height: 75px;
+    margin-right: 25%;
     font-size: .8em;
-    margin-right: 25%
 }
+
+
+/* --- FORM PAGES --- */
+
+form label {
+    font-size: .8em;
+    font-weight: bold;
+    display: block;
+}
+
+/* Login and sign up */
 
 div.login-create {
     margin-bottom: 12px;
@@ -156,9 +190,9 @@ div.login-create {
 
 form#login-form,
 form#signup-form {
-    margin-top: 12px;
     max-width: 400px;
     min-width: 250px;
+    margin-top: 12px;
     padding: 8px 0;
 }
 
@@ -170,43 +204,21 @@ form#signup-form input {
     font-size: .8em;
 }
 
+/* New and editing posts */
+
 form#new-post input,
 form#new-post textarea {
     width: 75%;
     margin-right: 25%;
-    font-size: .8em;
     margin-bottom: 10px;
+    font-size: .8em;
 }
 
 form#new-post textarea {
     height: 200px;
 }
 
-form label {
-    font-size: .8em;
-    font-weight: bold;
-    display: block;
-}
-
 a.edit-post,
 a.delete-post {
     font-size: .8em;
-}
-
-a.bold-link {
-    font-weight: 700;
-    color: var(--main);
-    margin-bottom: 6px;
-}
-
-ul.navbar-nav,
-header div {
-    margin-left: 12px;
-    font-size: .8em;
-}
-
-div#warning {
-    margin-top: 8px;
-    font-weight: 700;
-    color: #990000;
 }
