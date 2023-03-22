@@ -5,6 +5,10 @@ const isAuth = require('../../utils/auth');
 // CREATE new post
 router.post('/', isAuth, async (req, res) => {
   try {
+    if (req.body.title == "" || req.body.content =="") {
+      res.status(400).json({ message: "Posts must have both a title and content."});
+      return;
+    }
     const postData = await Post.create({
       content: req.body.content,
       title: req.body.title,
@@ -49,6 +53,10 @@ router.delete('/:id', isAuth, async (req, res) => {
 router.put('/:id', isAuth, async (req, res) => {
   console.log(req.params.id);
   try {
+    if (req.body.title == "" || req.body.content =="") {
+      res.status(400).json({ message: "Posts must have both a title and content."});
+      return;
+    }
     const postData = await Post.findOne({
       where: { id: req.params.id, user_id: req.session.user }
     })

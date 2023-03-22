@@ -10,8 +10,6 @@ window.onload = () => {
             e.preventDefault();
             try {
                 let text = newComment.value;
-                text = text.replace(/<.*?>/, "").replace(/<.*?>/, "");
-
                 const bodyObj = {
                     content: text,
                     post_id: postId

@@ -15,22 +15,22 @@
 <body>
   <header>
     <h1>My Tech Blog</h1>
+    {{#if userInfo.loggedIn}}
+      <div>
+        {{userInfo.username}}
+      </div>
+    {{/if}}
     <nav class="navbar">
-      <div class="container-fluid">
-        <ul class="navbar-nav me-auto mb-0">
+        <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" href="/">HOME</a>
           </li>
+         
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/dash">Dashboard</a>
+          </li>
           {{#if userInfo.loggedIn}}
-          <li class="nav-item">
-            {{userInfo.username}}
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/dash">My Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/posts/create">Post</a>
-          </li>
           <li class="nav-item">
             <a class="nav-link" href="/logout" id="logout">Log out</a>
           </li>
@@ -40,7 +40,6 @@
           </li> 
           {{/if}}
         </ul>
-      </div>
     </nav>
   </header>
   <main>
