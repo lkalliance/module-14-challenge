@@ -2,7 +2,7 @@
 
     <div data-id="{{id}}" class="border bg-light p-2  p-lg-3 rounded">
         <h3><a href='/posts/view/{{id}}'>{{title}}</a></h3>
-        <cite>{{#if user.username}}<a href="/dash/{{user.id}}">{{user.username}}</a>, {{/if}}{{format_date created_at}}</cite>
+        <cite>{{#if user.username}}<a href="/posts/list/{{user.id}}">{{user.username}}</a>, {{/if}}{{format_date created_at}}</cite>
     </div>
 
 </li>

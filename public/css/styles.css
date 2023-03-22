@@ -65,7 +65,7 @@ main a {
 
 main h2 {
     font-weight: 700;
-    color: var(--main);
+    color: var(--headline-color);
     margin-bottom: 8px;
 }
 
@@ -150,12 +150,16 @@ div#add-comment textarea {
     margin-right: 25%
 }
 
+div.login-create {
+    margin-bottom: 12px;
+}
+
 form#login-form,
 form#signup-form {
-    width: 44%;
-    margin: 0 3%;
-    float: left;
-    margin-top: 10px;
+    margin-top: 12px;
+    max-width: 400px;
+    min-width: 250px;
+    padding: 8px 0;
 }
 
 form#login-form input,
@@ -193,4 +197,16 @@ a.bold-link {
     font-weight: 700;
     color: var(--main);
     margin-bottom: 6px;
+}
+
+ul.navbar-nav,
+header div {
+    margin-left: 12px;
+    font-size: .8em;
+}
+
+div#warning {
+    margin-top: 8px;
+    font-weight: 700;
+    color: #990000;
 }

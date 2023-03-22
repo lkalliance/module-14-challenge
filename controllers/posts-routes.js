@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['username']
+          attributes: ['id', 'username']
         }
       ],
       order: [
@@ -24,8 +24,50 @@ router.get('/', async (req, res) => {
     const userInfo = {
       username: req.session.username,
       userId: req.session.userId,
-      loggedIn: req.session.loggedIn
+      loggedIn: req.session.loggedIn,
+      showUser: false
     }
+
+    res.render('postlist', { posts, userInfo });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// GET all posts by a user
+router.get('/list/:user', async (req, res) => {
+  try {
+    const postData = await Post.findAll({
+      where: { user_id: req.params.user },
+      attributes: ['id', 'title', 'created_at'],
+      include: [
+        {
+          model: User,
+          attributes: ['id', 'username']
+        }
+      ],
+      order: [
+        ['created_at', 'DESC']
+      ]
+    });
+    const userData = await User.findOne({
+      where: { id: req.params.user },
+      attributes: ['username']
+    })
+
+    const posts = postData.map((post) =>
+      post.get({ plain: true })
+    );
+    const user = userData.get({ plain: true });
+    const userInfo = {
+      username: req.session.username,
+      userId: req.session.userId,
+      loggedIn: req.session.loggedIn,
+      showUser: user
+    }
+
+    console.log(userInfo.showUser);
 
     res.render('postlist', { posts, userInfo });
   } catch (err) {
@@ -87,7 +129,7 @@ router.get('/create', isAuth, async (req, res) => {
     loggedIn: req.session.loggedIn,
     edit: false
   }
-
+console.log("I'm about to create a post");
   res.render('postform', { userInfo });
 
 });
