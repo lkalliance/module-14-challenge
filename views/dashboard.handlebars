@@ -1,4 +1,9 @@
+{{#if userInfo.noPosts}}
+<h2>No posts by {{userInfo.username}}</h2>
+{{else}}
 <h2>Posts by {{userInfo.username}}</h2>
+{{/if}}
+<a href="/posts/create" class="bold-link">Make a new post</a>
 <div class="container">
     <ul class="row g-2 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
         {{#each posts as |post|}}

@@ -25,7 +25,7 @@ const postActions = () => {
             }
             const postData = await fetch("/api/posts/", fetchObj);
 
-            document.location.replace(postData.url);
+            document.location.replace('/dash');
         } catch (err) {
             console.log(err);
         }

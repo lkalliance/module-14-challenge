@@ -31,7 +31,7 @@ const postActions = () => {
             const fetchUrl = `/api/posts/${postId}`;
             const editData = await fetch(fetchUrl, fetchObj);
 
-            document.location.replace(`/posts/view/${postId}`);
+            document.location.replace(`/dash`);
         } catch (err) {
             console.log(err);
         }

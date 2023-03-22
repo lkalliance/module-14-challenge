@@ -1,11 +1,16 @@
 :root {
+    --page-background: #d6ddec;
     --main: #2d3e81;
     --main-text: #ffffff;
     --main-hover: rgb(175, 175, 232);
-    --headline-color: rgb(168, 122, 37);
+    --headline-color: rgb(147, 48, 26);
     --cite-color: #777777;
     --comment-color: #777777;
     --comment-cite-color: #aaaaaa;
+}
+
+body {
+    background-color: var(--page-background);
 }
 
 header {
@@ -83,6 +88,7 @@ main cite a {
 main div.container {
     margin-left: 0;
     padding-left: 0;
+    margin-top: 6px;
 }
 
 main .row {
@@ -98,7 +104,7 @@ main cite {
 main cite.by {
     display: block;
     padding-bottom: 8px;
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid #bababa;
     margin-bottom: 10px;
 }
 
@@ -117,7 +123,7 @@ main div#comments h3 {
     font-weight: 700;
     color: var(--main);
     margin-top: 12px;
-    border-top: 1px solid #cccccc;
+    border-top: 1px solid #bababa;
     padding-top: 12px;
 }
 
@@ -181,4 +187,10 @@ form label {
 a.edit-post,
 a.delete-post {
     font-size: .8em;
+}
+
+a.bold-link {
+    font-weight: 700;
+    color: var(--main);
+    margin-bottom: 6px;
 }

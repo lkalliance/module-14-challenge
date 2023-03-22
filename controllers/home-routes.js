@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
           attributes: ['username']
         }
       ],
-      limit: 5,
+      limit: 10,
       order: [
         ['created_at', 'DESC']
       ]
@@ -51,6 +51,7 @@ router.get('/dash', isAuth, async (req, res) => {
       userId: req.session.userId,
       loggedIn: req.session.loggedIn
     }
+    if (posts.length == 0) userInfo.noPosts = true;
 
     res.render('dashboard', { posts, userInfo });
   } catch (err) {
