@@ -21,12 +21,20 @@ I built You Get a Tech Blog! because I like simplicity. Too many Web apps get so
 
 As a user, you interact with You Get a Tech Blog! through your web browser of choice, it's as simple as that. There are no other installations necessary on your computer, phone or tablet. You will need to have Javascript enabled to use the app.
 
+<img src='./public/images/tech-blog-screen-1.png' width="275" />
+<img src='./public/images/tech-blog-screen-2.png' width="275" />
+
+
 
 ## Usage Information
 
 The home page of You Get a Tech Blog! is a list of the most recent ten posts by all users of the site, ordered chronologically starting with the most recent. Each is shown with its headline, author and publish date. Clicking on the "see all posts" link at the bottom of the home page takes you to the entire list of all published articles.
 
 Anywhere you see the author of a post, that name will be clickable to show a list of all posts by that user, each with a publish date. Anywhere you see a link to a headline, click it to view the contents of the post an all comments that have been left.
+
+<img src='./public/images/tech-blog-screen-3.png' width="275" />
+<img src='./public/images/tech-blog-screen-4.png' width="275" />
+
 
 Anyone, registered user or not, may read any posts on the site, but in order to create any content yourself--either posts or comments--you will need to have a user account or log in. Click the "Log in" link in the main navigation. You can create an account by providing a unique username, unique email address and a password. If you already have an account, log in with your username and password.
 
