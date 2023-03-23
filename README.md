@@ -6,6 +6,8 @@ You Get a Tech Blog! is a simple CMS Web platform for managing your own blog, al
 
 I built You Get a Tech Blog! because I like simplicity. Too many Web apps get so feature-rich that they become confusing to use. I wanted something for this purpose that is, well, simple. You Get a Tech Blog! puts up almost no hurdles between you and the act of publishing.
 
+You can access the working site [here](https://you-get-a-tech-blog.herokuapp.com).
+
 
 ## Table of Contents
 
